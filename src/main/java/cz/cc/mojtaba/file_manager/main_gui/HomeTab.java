@@ -1,7 +1,7 @@
 package cz.cc.mojtaba.file_manager.main_gui;
 
 import cz.cc.mojtaba.file_manager.GUIComponent;
-import cz.cc.mojtaba.file_manager.util.UTF8Control;
+import cz.cc.mojtaba.file_manager.util.Configs;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,7 +9,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -26,6 +25,8 @@ public class HomeTab extends Tab implements GUIComponent {
 
     //    private Tab tabNode;
     private HBox tabContent;
+    private ResourceBundle bundle;
+    private Configs configs;
 
     private HomeTab() {
         super();
@@ -40,13 +41,16 @@ public class HomeTab extends Tab implements GUIComponent {
 
     @Override
     public void initialize() {
-        ResourceBundle bundle = ResourceBundle.getBundle("i18n/main_gui_text_bundle", new Locale("fa", "IR"), new UTF8Control());
-        homeTabName = bundle.getString("homeTabName");
+        configs = Configs.getInstance();
+        bundle = ResourceBundle.getBundle("i18n/main_gui_text_bundle", configs.getCurrentLocale(),
+                configs.getControl());
+
         controller = MainGUIController.getInstance();
     }
 
     @Override
     public void build() {
+        homeTabName = bundle.getString("home_tab_name");
         setText(homeTabName);
         setClosable(false);
 
@@ -63,8 +67,8 @@ public class HomeTab extends Tab implements GUIComponent {
     }
 
     private Button buildFileBrowserButton() {
-
-        Button button = new Button("File Browser", new ImageView("/plain2.jpg"));
+        String button_text = bundle.getString("file_browser_button_text");
+        Button button = new Button(button_text, new ImageView("/plain2.jpg"));
         button.setOnAction(controller.fileBrowserButtonAction());
         return button;
     }

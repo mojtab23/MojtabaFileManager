@@ -23,6 +23,8 @@ public class Configs {
     private final Properties configs;
     private Locale currentLocale;
 
+    private UTF8Control control;
+
     private Configs() {
         configs = new Properties();
         loadConfigs();
@@ -36,7 +38,7 @@ public class Configs {
     }
 
     public Locale getCurrentLocale() {
-        if (currentLocale == null) {
+        if (currentLocale == null) synchronized (Configs.class) {
             String language = configs.getProperty("current_language", "en");
             String country = configs.getProperty("current_country", "US");
             currentLocale = new Locale(language, country);
@@ -65,5 +67,10 @@ public class Configs {
         exceptionDialog.show();
     }
 
-
+    public UTF8Control getControl() {
+        if (control == null) synchronized (Configs.class) {
+            control = new UTF8Control();
+        }
+        return control;
+    }
 }

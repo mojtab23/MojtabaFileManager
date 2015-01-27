@@ -55,7 +55,6 @@ public class MojtabaFileManagerApp extends Application {
         //todo initial jobs and update status bar...
         configs = Configs.getInstance();
         buildMainGUI();
-
         splashScreen.close();
     }
 

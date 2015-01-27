@@ -2,12 +2,15 @@ package cz.cc.mojtaba.file_manager.file_browser;
 
 import cz.cc.mojtaba.file_manager.GUIComponent;
 import cz.cc.mojtaba.file_manager.main_gui.MainGUI;
+import cz.cc.mojtaba.file_manager.util.Configs;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
+
+import java.util.ResourceBundle;
 
 /**
  * Created by mojtab23 on 1/14/15.
@@ -22,14 +25,8 @@ public class FileBrowserTab extends Tab implements GUIComponent {
     private BorderPane mainPane;
     private MainGUI mainGUI;
 
-    public TilePane getTilePane() {
-        return tilePane;
-    }
-
-    public void setTilePane(TilePane tilePane) {
-        this.tilePane = tilePane;
-    }
-
+    private ResourceBundle bundle;
+    private Configs configs;
     private TilePane tilePane;
 
     private FileBrowserTab() {
@@ -42,13 +39,23 @@ public class FileBrowserTab extends Tab implements GUIComponent {
         return instance;
     }
 
+    public TilePane getTilePane() {
+        return tilePane;
+    }
+
+    public void setTilePane(TilePane tilePane) {
+        this.tilePane = tilePane;
+    }
 
     @Override
     public void initialize() {
+        configs = Configs.getInstance();
+        bundle = ResourceBundle.getBundle("i18n/file_browser_text_bundle", configs.getCurrentLocale(),
+                configs.getControl());
         fileBrowser = FileBrowser.getInstance();
         mainGUI = MainGUI.getInstance();
         fileBrowser.initialize();
-        tabName = DEFAULT_TAB_NAME;
+
 
 
     }
@@ -56,6 +63,7 @@ public class FileBrowserTab extends Tab implements GUIComponent {
 
     @Override
     public void build() {
+        tabName = bundle.getString("file_tab_name");
         setText(tabName);
         buildContent();
         fileBrowser.build();
