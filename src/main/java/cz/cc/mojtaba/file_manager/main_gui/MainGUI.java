@@ -2,7 +2,10 @@ package cz.cc.mojtaba.file_manager.main_gui;
 
 import cz.cc.mojtaba.file_manager.GUIComponent;
 import cz.cc.mojtaba.file_manager.file_browser.FileBrowserTab;
+import cz.cc.mojtaba.file_manager.util.Configs;
 import javafx.scene.control.TabPane;
+
+import java.util.Locale;
 
 /**
  * Created by mojtab23 on 1/14/15.
@@ -12,15 +15,10 @@ public class MainGUI extends TabPane implements GUIComponent {
     private volatile static MainGUI instance;
     //    private TabPane tabPane;
     private HomeTab homeTab;
-
-    public FileBrowserTab getFileBrowserTab() {
-        return fileBrowserTab;
-    }
-
+    private Configs configs;
+    private Locale currentLocale;
     private FileBrowserTab fileBrowserTab;
     private boolean fileBrowserTabBuilt = false;
-
-
     private MainGUI() {
         super();
     }
@@ -34,6 +32,10 @@ public class MainGUI extends TabPane implements GUIComponent {
         return instance;
     }
 
+    public FileBrowserTab getFileBrowserTab() {
+        return fileBrowserTab;
+    }
+
     public boolean isFileBrowserTabBuilt() {
         return fileBrowserTabBuilt;
     }
@@ -44,7 +46,8 @@ public class MainGUI extends TabPane implements GUIComponent {
 
     public void initialize() {
         //todo
-
+        configs = Configs.getInstance();
+        currentLocale = configs.getCurrentLocale();
         homeTab = HomeTab.getInstance();
         homeTab.initialize();
         fileBrowserTab = FileBrowserTab.getInstance();
@@ -62,7 +65,7 @@ public class MainGUI extends TabPane implements GUIComponent {
 
     public void buildFileBrowserTab() {
         fileBrowserTab.build();
-        getTabs().add(1,fileBrowserTab);
+        getTabs().add(1, fileBrowserTab);
 
     }
 

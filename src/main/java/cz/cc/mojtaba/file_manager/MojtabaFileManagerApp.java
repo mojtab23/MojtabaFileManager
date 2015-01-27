@@ -5,6 +5,7 @@ package cz.cc.mojtaba.file_manager;
  */
 
 import cz.cc.mojtaba.file_manager.main_gui.MainGUI;
+import cz.cc.mojtaba.file_manager.util.Configs;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ public class MojtabaFileManagerApp extends Application {
     private Stage splashScreen;
     private MainGUI mainGUI;
     private Scene scene;
+    private Configs configs;
 
     public static void main(String[] args) {
         launch(args);
@@ -48,6 +50,16 @@ public class MojtabaFileManagerApp extends Application {
      * show splash screen and initial the program and update the splash status.
      */
     private void initialApp() {
+        startSplashScreen();
+
+        //todo initial jobs and update status bar...
+        configs = Configs.getInstance();
+        buildMainGUI();
+
+        splashScreen.close();
+    }
+
+    private void startSplashScreen() {
         splashScreen = new Stage();
         splashScreen.initStyle(StageStyle.TRANSPARENT);
         VBox box = new VBox();
@@ -55,11 +67,6 @@ public class MojtabaFileManagerApp extends Application {
         scene.setFill(new ImagePattern(new Image("/plain2.jpg")));
         splashScreen.setScene(scene);
         splashScreen.show();
-
-        //todo initial jobs and update status bar...
-        buildMainGUI();
-
-        splashScreen.close();
     }
 
     /**

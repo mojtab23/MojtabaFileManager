@@ -32,8 +32,6 @@ public class FileItem extends Button {
     private Property<Path> path;
 
 
-
-
     public FileItem(Path path) {
         this.path = new SimpleObjectProperty<>();
         this.path.setValue(path);

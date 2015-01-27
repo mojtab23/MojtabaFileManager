@@ -1,12 +1,16 @@
 package cz.cc.mojtaba.file_manager.main_gui;
 
 import cz.cc.mojtaba.file_manager.GUIComponent;
+import cz.cc.mojtaba.file_manager.util.UTF8Control;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * Created by mojtab23 on 1/14/15.
@@ -36,6 +40,8 @@ public class HomeTab extends Tab implements GUIComponent {
 
     @Override
     public void initialize() {
+        ResourceBundle bundle = ResourceBundle.getBundle("i18n/main_gui_text_bundle", new Locale("fa", "IR"), new UTF8Control());
+        homeTabName = bundle.getString("homeTabName");
         controller = MainGUIController.getInstance();
     }
 
