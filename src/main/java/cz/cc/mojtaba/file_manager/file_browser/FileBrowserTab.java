@@ -79,6 +79,7 @@ public class FileBrowserTab extends Tab implements GUIComponent {
         tilePane.setPadding(new Insets(5));
         tilePane.setHgap(5);
         tilePane.setVgap(5);
+//        tilePane.setAlignment();
         scrollPane.setContent(tilePane);
         mainPane = new BorderPane();
         mainPane.setTop(new FileBrowserToolBar());

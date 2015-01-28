@@ -29,6 +29,7 @@ public class FileItem extends Button {
     private final Image fileIcon = new Image("icon-54-document.png");
     private final FileBrowser fileBrowser;
     private final Border hoverBorder;
+    private final Border defaultBorder;
     private Property<Path> path;
 
 
@@ -36,8 +37,11 @@ public class FileItem extends Button {
         this.path = new SimpleObjectProperty<>();
         this.path.setValue(path);
         fileBrowser = FileBrowser.getInstance();
+        defaultBorder = new Border(new BorderStroke(Color.TRANSPARENT,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
         hoverBorder = new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
+        setBorder(defaultBorder);
         detectFileType();
         setTooltip(new Tooltip(path.getFileName().toString()));
         setText(path.getFileName().toString());
@@ -71,7 +75,7 @@ public class FileItem extends Button {
                 if (newValue && !oldValue) {
                     setBorder(hoverBorder);
                 } else if (!newValue && oldValue) {
-                    setBorder(Border.EMPTY);
+                    setBorder(defaultBorder);
                 }
             }
         });
