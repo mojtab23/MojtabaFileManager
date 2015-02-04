@@ -8,17 +8,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ResourceBundle;
 
 /**
  * Created by mojtab23 on 1/14/15.
  */
+@Component
 public class HomeTab extends Tab implements GUIComponent {
 
     private volatile static HomeTab instance;
     private final String DEFAULT_HOME_TAB_NAME = "Home";
 
+    @Autowired
     private MainGUIController controller;
 
     private String homeTabName = DEFAULT_HOME_TAB_NAME;
@@ -45,7 +49,7 @@ public class HomeTab extends Tab implements GUIComponent {
         bundle = ResourceBundle.getBundle("i18n/main_gui_text_bundle", configs.getCurrentLocale(),
                 configs.getControl());
 
-        controller = MainGUIController.getInstance();
+//        controller = MainGUIController.getInstance();
     }
 
     @Override

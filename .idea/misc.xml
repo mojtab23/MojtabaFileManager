@@ -3,6 +3,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <type id="Spring" />
+  </component>
   <component name="IdProvider" IDEtalkID="13FFD0A898B74F1A129BB302E91CEA54" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">

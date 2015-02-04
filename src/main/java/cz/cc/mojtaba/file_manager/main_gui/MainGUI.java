@@ -4,24 +4,28 @@ import cz.cc.mojtaba.file_manager.GUIComponent;
 import cz.cc.mojtaba.file_manager.file_browser.FileBrowserTab;
 import cz.cc.mojtaba.file_manager.util.Configs;
 import javafx.scene.control.TabPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
 /**
  * Created by mojtab23 on 1/14/15.
  */
+@Component
 public class MainGUI extends TabPane implements GUIComponent {
 
     private volatile static MainGUI instance;
     //    private TabPane tabPane;
+    @Autowired
     private HomeTab homeTab;
     private Configs configs;
     private Locale currentLocale;
     private FileBrowserTab fileBrowserTab;
     private boolean fileBrowserTabBuilt = false;
-    private MainGUI() {
-        super();
-    }
+//    private MainGUI() {
+//        super();
+//    }
 
     public static MainGUI getInstance() {
         if (instance == null) {
@@ -48,7 +52,7 @@ public class MainGUI extends TabPane implements GUIComponent {
         //todo
         configs = Configs.getInstance();
         currentLocale = configs.getCurrentLocale();
-        homeTab = HomeTab.getInstance();
+//        homeTab = HomeTab.getInstance();
         homeTab.initialize();
         fileBrowserTab = FileBrowserTab.getInstance();
         fileBrowserTab.initialize();
