@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -26,11 +27,11 @@ public class FileBrowser implements GUIComponent {
     private final String DEFAULT_DIRECTORY = System.getProperty("user.home");
     private final Image image = new Image("/Generic-icon.png");
     private final Image image1 = new Image("/FileIcon.png");
+    // is the path of the directory of browser tab and string in address bar.
     private Property<Path> currentDirectory;
     private StringProperty currentDirectoryAddress;
     private FileBrowserTab browserTab;
     private List<Path> dirContent;
-
     private FileBrowser() {
     }
 
@@ -39,6 +40,14 @@ public class FileBrowser implements GUIComponent {
             instance = new FileBrowser();
         }
         return instance;
+    }
+
+    public void setCurrentDirectoryAddress(StringProperty currentDirectoryAddress) {
+        this.currentDirectoryAddress = currentDirectoryAddress;
+    }
+
+    public Property<Path> currentDirectoryProperty() {
+        return currentDirectory;
     }
 
     public String currentDirectoryAddress() {
@@ -65,6 +74,10 @@ public class FileBrowser implements GUIComponent {
         return currentDirectory.getValue();
     }
 
+    public void setCurrentDirectory(Path currentDirectory) {
+        this.currentDirectory.setValue(currentDirectory);
+    }
+
     public Property<Path> CurrentDirectoryProperty() {
         return currentDirectory;
     }
@@ -76,6 +89,9 @@ public class FileBrowser implements GUIComponent {
     @Override
     public void initialize() {
         currentDirectoryAddress = new SimpleStringProperty("");
+        currentDirectoryAddress.addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) currentDirectoryAddress.setValue(newValue);
+        });
         currentDirectory = new SimpleObjectProperty<>();
         currentDirectory.addListener(new ChangeListener<Path>() {
             @Override
@@ -92,13 +108,17 @@ public class FileBrowser implements GUIComponent {
                                 browserTab.getTilePane().getChildren().add(buildFileItem(path));
                             }
                         });
-                        currentDirectoryAddress.setValue(newValue.toString());
+                        currentDirectoryAddress.set(newValue.toString());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
-                } else System.err.println("this is not a directory.");
 
+//            todo  if the newValue is a file path should show the parent dir of this file
+                } else {
+                    System.err.println("this is not a directory.");
+                    currentDirectoryAddress.set(oldValue.toString());
+                }
             }
         });
         browserTab = FileBrowserTab.getInstance();
@@ -111,6 +131,9 @@ public class FileBrowser implements GUIComponent {
         currentDirectory.setValue(FileSystems.getDefault().getPath(DEFAULT_DIRECTORY));
     }
 
+    public void setAddress(String address) {
+        setCurrentDirectory(Paths.get(address));
+    }
 
     private FileItem buildFileItem(Path path) {
         return new FileItem(path);
