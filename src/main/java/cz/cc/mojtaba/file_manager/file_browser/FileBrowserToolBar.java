@@ -1,7 +1,6 @@
 package cz.cc.mojtaba.file_manager.file_browser;
 
 import javafx.beans.property.Property;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -38,7 +37,6 @@ public class FileBrowserToolBar extends VBox {
         addressBar = new TextField();
         addressBar.prefWidthProperty().bind(prefWidthProperty());
         fileBrowser.setCurrentDirectoryAddress(addressBar.textProperty());
-//        addressBar.textProperty().addListener(changeText());
         addressBar.setOnAction(event ->
                 fileBrowser.setAddress(addressBar.getText()));
         getChildren().addAll(addressBar, toolBar);
@@ -46,22 +44,11 @@ public class FileBrowserToolBar extends VBox {
         prefHeight(Double.MAX_VALUE);
     }
 
-    private ChangeListener<? super String> changeText() {
-        return (observable, oldValue, newValue) -> {
-
-            if (newValue != null) {
-                fileBrowser.currentDirectoryAddressProperty().setValue(newValue);
-            }
-        };
-    }
-
 
     private Button buildUpButton() {
         Button upButton = new Button("↑");
         upButton.setTooltip(new Tooltip("go to root directory."));
-        upButton.setOnAction(event -> {
-            currentDir.setValue(currentDir.getValue().getParent());
-        });
+        upButton.setOnAction(event -> currentDir.setValue(currentDir.getValue().getParent()));
         return upButton;
     }
 
