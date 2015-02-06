@@ -7,7 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2772104-2c25-4eab-a138-073e9c7791de" name="Default" comment="address bar text can change the current directory.&#10;نوشته ادرس بار می توند پوشه جاری را تغییر دهد.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowser.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserToolBar.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserToolBar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MojtabaFileManager.iws" />
@@ -41,21 +43,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FileBrowser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FileBrowser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.0622952" vertical-offset="153" max-vertical-offset="1853">
-              <caret line="119" column="67" selection-start-line="119" selection-start-column="67" selection-end-line="119" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1583" max-vertical-offset="2227">
+              <caret line="163" column="61" selection-start-line="163" selection-start-column="61" selection-end-line="163" selection-end-column="61" />
+              <folding>
+                <element signature="e#5266#5267#0" expanded="true" />
+                <element signature="e#5336#5337#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="1105">
+              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileBrowserToolBar.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FileBrowserToolBar.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserToolBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-              <caret line="47" column="12" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7770492" vertical-offset="257" max-vertical-offset="867">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,15 +107,15 @@
         <option value="$PROJECT_DIR$/src/main/resources/i18n/main_gui_text_bundle_en_US.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/i18n/file_browser_text_bundle_en_US.properties" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserTab.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestFileSystemDrives.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java" />
         <option value="$PROJECT_DIR$/src/main/resources/configs.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/MojtabaFileManagerApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/main_gui/MainGUIController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/main_gui/MainGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/main_gui/HomeTab.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestFileSystemDrives.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/ApplicationMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/MojtabaFileManagerApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowser.java" />
         <option value="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserToolBar.java" />
       </list>
@@ -183,6 +198,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -352,6 +375,23 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestFileSystemDrives" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="TestFileSystemDrives" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MojtabaFileManager" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -620,12 +660,14 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.MojtabaFileManagerApp" />
+      <item index="1" class="java.lang.String" itemvalue="Application.TestFileSystemDrives" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Application.MojtabaFileManagerApp" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TestFileSystemDrives" />
       </list>
     </recent_temporary>
   </component>
@@ -676,7 +718,8 @@
       <workItem from="1422782698022" duration="231000" />
       <workItem from="1423043222819" duration="3572000" />
       <workItem from="1423062309282" duration="3542000" />
-      <workItem from="1423068594313" duration="1105000" />
+      <workItem from="1423068594313" duration="1812000" />
+      <workItem from="1423230434664" duration="1973000" />
     </task>
     <task id="LOCAL-00001" summary="add basic resource bundle.&#10;پشتیبانی اولیه از ریسورس و فایل تنظیمات فراهم شد.">
       <created>1422351900266</created>
@@ -708,11 +751,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423069694153</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="address bar text can change the current directory.&#10;نوشته ادرس بار می توند پوشه جاری را تغییر دهد.">
+      <created>1423069809202</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1423069809202</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112066000" />
+    <option name="totallyTimeSpent" value="114746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1314" height="784" extended-state="6" />
@@ -727,6 +776,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32668713" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.6230032" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1114" height="584" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41564417" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -744,7 +794,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.6230032" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1114" height="584" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32668713" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -806,9 +855,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="14" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.path" language="JAVA" custom="" />
+        <watch expression="Files.isRegularFile(path.getValue())" />
+        <watch expression="Desktop.isDesktopSupported()" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1087,13 +1142,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestFileSystemDrives.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://H:/Program Files/Java/jdk1.8.0_31/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1910" max-vertical-offset="15844">
@@ -1122,39 +1170,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/main_gui/MainGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3622951" vertical-offset="0" max-vertical-offset="969">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/MojtabaFileManagerApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/ApplicationMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
-          <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1360">
-          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1195,7 +1214,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="499" max-vertical-offset="2210">
           <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
-            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1219,22 +1238,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="623">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/main_gui/MainGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserToolBar.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestFileSystemDrives.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <caret line="47" column="12" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.37239164" vertical-offset="159" max-vertical-offset="782">
+          <caret line="23" column="93" selection-start-line="21" selection-start-column="7" selection-end-line="23" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/ApplicationMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/MojtabaFileManagerApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16372392" vertical-offset="0" max-vertical-offset="623">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#388#389#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0622952" vertical-offset="153" max-vertical-offset="1853">
-          <caret line="119" column="67" selection-start-line="119" selection-start-column="67" selection-end-line="119" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1583" max-vertical-offset="2227">
+          <caret line="163" column="61" selection-start-line="163" selection-start-column="61" selection-end-line="163" selection-end-column="61" />
+          <folding>
+            <element signature="e#5266#5267#0" expanded="true" />
+            <element signature="e#5336#5337#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file_manager/file_browser/FileBrowserToolBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7770492" vertical-offset="257" max-vertical-offset="867">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>

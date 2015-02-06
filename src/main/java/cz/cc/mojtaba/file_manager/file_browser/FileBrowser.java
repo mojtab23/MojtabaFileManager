@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -32,6 +33,7 @@ public class FileBrowser implements GUIComponent {
     private StringProperty currentDirectoryAddress;
     private FileBrowserTab browserTab;
     private List<Path> dirContent;
+
     private FileBrowser() {
     }
 
@@ -140,4 +142,25 @@ public class FileBrowser implements GUIComponent {
     }
 
 
+    public void open(Path path) {
+        if (Files.isDirectory(path)) {
+            currentDirectory.setValue(path);
+        } else {
+            if (Files.isRegularFile(path)
+                    && Desktop.isDesktopSupported()) {
+                try {
+                    Desktop desktop = Desktop.getDesktop();
+                    if (desktop.isSupported(Desktop.Action.OPEN)) {
+                        desktop.open(path.toFile());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void upDir() {
+        setCurrentDirectory(getCurrentDirectory().getParent());
+    }
 }

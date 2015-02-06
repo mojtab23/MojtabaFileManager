@@ -15,8 +15,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
-import java.awt.*;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -53,22 +51,7 @@ public class FileItem extends Button {
         setPadding(Insets.EMPTY);
         setAlignment(Pos.TOP_CENTER);
         setBackground(Background.EMPTY);
-        setOnAction(event -> {
-            if (Files.isDirectory(path)) {
-                fileBrowser.CurrentDirectoryProperty().setValue(path);
-            } else {
-                if (Files.isRegularFile(path) && Desktop.isDesktopSupported()) {
-                    try {
-                        Desktop desktop = Desktop.getDesktop();
-                        if (desktop.isSupported(Desktop.Action.OPEN)) {
-                            desktop.open(path.toFile());
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        setOnAction(event -> fileBrowser.open(this.path.getValue()));
         hoverProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
