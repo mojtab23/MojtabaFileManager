@@ -24,6 +24,7 @@ import java.util.function.Consumer;
  */
 public class FileBrowser implements GUIComponent {
 
+    private final static char[] INVALID_FILE_NAME_CHARS = {'\u0000', '\\', '/', '*', '?', ':', '|', '"', '<', '>'};
     private volatile static FileBrowser instance;
     private final String DEFAULT_DIRECTORY = System.getProperty("user.home");
     private final Image image = new Image("/Generic-icon.png");
@@ -162,5 +163,24 @@ public class FileBrowser implements GUIComponent {
 
     public void upDir() {
         setCurrentDirectory(getCurrentDirectory().getParent());
+    }
+
+    public Path rename(Path path, String newName) {
+        boolean invalidName = false;
+        for (char invalidFileNameChar : INVALID_FILE_NAME_CHARS)
+            if (newName.indexOf(invalidFileNameChar) >= -1) {
+                invalidName = true;
+                break;
+            }
+        if (!invalidName) {
+            try {
+                return Files.move(path, path.resolveSibling(newName));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return path;
+            }
+        }
+        System.err.println("The name can't contain \\ / * ? : | \" < > characters.");//todo an exception dialog
+        return path;
     }
 }
