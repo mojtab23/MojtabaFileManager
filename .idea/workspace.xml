@@ -6,40 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2772104-2c25-4eab-a138-073e9c7791de" name="Default" comment="check file name characters.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/Connection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/ConnectionHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/DataPacket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/MyBuffer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/test/java/MyBufferTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/ReliableUDPServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/test/java/ReliableUDPServerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/test/java/SimpleUDPClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/UDP.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/java/UDP.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/file/browser/WatchDir.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UDP/src/main/resources/test.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MojtabaFileManager.iml" afterPath="$PROJECT_DIR$/MojtabaFileManager.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+    <list default="true" id="a2772104-2c25-4eab-a138-073e9c7791de" name="Default" comment="Network project added.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\ApplicationMain.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/ApplicationMain.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\GUIComponent.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/GUIComponent.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\MojtabaFileManagerApp.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/MojtabaFileManagerApp.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\file_browser\FileBrowser.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/file/browser/FileBrowser.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\file_browser\FileBrowserTab.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/file/browser/FileBrowserTab.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\file_browser\FileBrowserToolBar.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/file/browser/FileBrowserToolBar.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\file_browser\FileItem.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/file/browser/FileItem.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\main_gui\HomeTab.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/main/gui/HomeTab.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\main_gui\MainGUI.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/main/gui/MainGUI.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\main_gui\MainGUIController.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/main/gui/MainGUIController.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\util\Configs.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/util/Configs.java" />
-      <change type="MOVED" beforePath="E:\tamrin\Intellij\MojtabaFileManager\src\main\java\cz\cc\mojtaba\file_manager\util\UTF8Control.java" afterPath="$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/util/UTF8Control.java" />
     </list>
     <ignored path="MojtabaFileManager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,13 +46,13 @@
         <entry file="file://$PROJECT_DIR$/UDP/src/main/java/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+              <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
               <folding>
                 <element signature="method#put#0;class#Connection#0" expanded="false" />
-                <element signature="e#2031#2032#0" expanded="false" />
-                <element signature="e#2096#2097#0" expanded="false" />
-                <element signature="e#2140#2141#0" expanded="false" />
-                <element signature="e#2169#2170#0" expanded="false" />
+                <element signature="e#2032#2033#0" expanded="false" />
+                <element signature="e#2097#2098#0" expanded="false" />
+                <element signature="e#2141#2142#0" expanded="false" />
+                <element signature="e#2170#2171#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -93,7 +61,7 @@
       <file leaf-file-name="ReliableUDPServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UDP/src/main/java/ReliableUDPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67887324">
+            <state vertical-scroll-proportion="1.6810898">
               <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
               <folding />
             </state>
@@ -555,7 +523,7 @@
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="last.edited.regexp" value="" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
@@ -1053,7 +1021,7 @@
       <workItem from="1427872440552" duration="6059000" />
       <workItem from="1428158408007" duration="4501000" />
       <workItem from="1428224645418" duration="8067000" />
-      <workItem from="1428332329255" duration="6533000" />
+      <workItem from="1428332329255" duration="6794000" />
     </task>
     <task id="LOCAL-00001" summary="add basic resource bundle.&#10;پشتیبانی اولیه از ریسورس و فایل تنظیمات فراهم شد.">
       <created>1422351900266</created>
@@ -1103,11 +1071,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423997576830</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Network project added.">
+      <created>1428344886620</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1428344886620</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217592000" />
+    <option name="totallyTimeSpent" value="217853000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1131,7 +1105,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.6230032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="92" y="92" width="1114" height="584" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277512" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41257668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41257668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297546" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1205,7 +1179,8 @@
     <MESSAGE value="address bar text can change the current directory.&#10;نوشته ادرس بار می توند پوشه جاری را تغییر دهد." />
     <MESSAGE value="تمام عملیات بر روی فایل از طریق FileBrowser کلاس انجام می شود." />
     <MESSAGE value="check file name characters." />
-    <option name="LAST_COMMIT_MESSAGE" value="check file name characters." />
+    <MESSAGE value="Network project added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Network project added." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1215,7 +1190,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/cz/cc/mojtaba/file/manager/file/browser/FileBrowser.java</url>
-          <line>74</line>
+          <line>71</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -1587,6 +1562,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13621795">
           <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1603,13 +1579,13 @@
     <entry file="file://$PROJECT_DIR$/UDP/src/main/java/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
           <folding>
             <element signature="method#put#0;class#Connection#0" expanded="false" />
-            <element signature="e#2031#2032#0" expanded="false" />
-            <element signature="e#2096#2097#0" expanded="false" />
-            <element signature="e#2140#2141#0" expanded="false" />
-            <element signature="e#2169#2170#0" expanded="false" />
+            <element signature="e#2032#2033#0" expanded="false" />
+            <element signature="e#2097#2098#0" expanded="false" />
+            <element signature="e#2141#2142#0" expanded="false" />
+            <element signature="e#2170#2171#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1705,7 +1681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UDP/src/main/java/ReliableUDPServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67887324">
+        <state vertical-scroll-proportion="1.6810898">
           <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
           <folding />
         </state>
