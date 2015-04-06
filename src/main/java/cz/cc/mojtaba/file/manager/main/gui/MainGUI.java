@@ -1,8 +1,8 @@
-package cz.cc.mojtaba.file_manager.main_gui;
+package cz.cc.mojtaba.file.manager.main.gui;
 
-import cz.cc.mojtaba.file_manager.GUIComponent;
-import cz.cc.mojtaba.file_manager.file_browser.FileBrowserTab;
-import cz.cc.mojtaba.file_manager.util.Configs;
+import cz.cc.mojtaba.file.manager.GUIComponent;
+import cz.cc.mojtaba.file.manager.file.browser.FileBrowserTab;
+import cz.cc.mojtaba.file.manager.util.Configs;
 import javafx.scene.control.TabPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: cz.cc.mojtaba.file_manager.MojtabaFileManagerApp
+Main-Class: cz.cc.mojtaba.file.manager.MojtabaFileManagerApp
 

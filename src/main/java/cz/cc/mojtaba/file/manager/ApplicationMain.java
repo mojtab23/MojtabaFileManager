@@ -1,6 +1,6 @@
-package cz.cc.mojtaba.file_manager;
+package cz.cc.mojtaba.file.manager;
 
-import cz.cc.mojtaba.file_manager.main_gui.MainGUI;
+import cz.cc.mojtaba.file.manager.main.gui.MainGUI;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;

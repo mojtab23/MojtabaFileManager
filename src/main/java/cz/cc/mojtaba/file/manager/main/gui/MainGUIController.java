@@ -1,4 +1,4 @@
-package cz.cc.mojtaba.file_manager.main_gui;
+package cz.cc.mojtaba.file.manager.main.gui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

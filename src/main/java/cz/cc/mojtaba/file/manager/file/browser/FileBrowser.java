@@ -1,14 +1,12 @@
-package cz.cc.mojtaba.file_manager.file_browser;
+package cz.cc.mojtaba.file.manager.file.browser;
 
-import cz.cc.mojtaba.file_manager.GUIComponent;
+import cz.cc.mojtaba.file.manager.GUIComponent;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.awt.*;
 import java.io.IOException;
@@ -16,7 +14,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -27,13 +24,11 @@ public class FileBrowser implements GUIComponent {
     private final static char[] INVALID_FILE_NAME_CHARS = {'\u0000', '\\', '/', '*', '?', ':', '|', '"', '<', '>'};
     private volatile static FileBrowser instance;
     private final String DEFAULT_DIRECTORY = System.getProperty("user.home");
-    private final Image image = new Image("/Generic-icon.png");
-    private final Image image1 = new Image("/FileIcon.png");
     // is the path of the directory of browser tab and string in address bar.
     private Property<Path> currentDirectory;
     private StringProperty currentDirectoryAddress;
     private FileBrowserTab browserTab;
-    private List<Path> dirContent;
+    private WatchDir watchDir;
 
     private FileBrowser() {
     }
@@ -49,44 +44,12 @@ public class FileBrowser implements GUIComponent {
         this.currentDirectoryAddress = currentDirectoryAddress;
     }
 
-    public Property<Path> currentDirectoryProperty() {
-        return currentDirectory;
-    }
-
-    public String currentDirectoryAddress() {
-        return currentDirectoryAddress.get();
-    }
-
-    public StringProperty currentDirectoryAddressProperty() {
-        return currentDirectoryAddress;
-    }
-
-    private ImageView buildFileImage() {
-        return new ImageView(image1);
-    }
-
-    private ImageView buildDirectoryImage() {
-        return new ImageView(image);
-    }
-
-    public List<Path> getDirContent() {
-        return dirContent;
-    }
-
     public Path getCurrentDirectory() {
         return currentDirectory.getValue();
     }
 
     public void setCurrentDirectory(Path currentDirectory) {
         this.currentDirectory.setValue(currentDirectory);
-    }
-
-    public Property<Path> CurrentDirectoryProperty() {
-        return currentDirectory;
-    }
-
-    public String getDEFAULT_DIRECTORY() {
-        return DEFAULT_DIRECTORY;
     }
 
     @Override
@@ -103,15 +66,11 @@ public class FileBrowser implements GUIComponent {
                     currentDirectory.setValue(oldValue);
                 } else if (Files.isDirectory(newValue)) {
                     try {
-                        browserTab.getTilePane().getChildren().clear();
-                        Files.newDirectoryStream(newValue).forEach(new Consumer<Path>() {
-                            @Override
-                            public void accept(Path path) {
-//                            dirContent.add(path);
-                                browserTab.getTilePane().getChildren().add(buildFileItem(path));
-                            }
-                        });
-                        currentDirectoryAddress.set(newValue.toString());
+                        if (watchDir != null) {
+                            watchDir.cancel();
+                        }
+                        watchDir = new WatchDir(newValue, false, instance);
+                        refreshDir(newValue);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -125,6 +84,17 @@ public class FileBrowser implements GUIComponent {
             }
         });
         browserTab = FileBrowserTab.getInstance();
+    }
+
+    private void refreshDir(Path newValue) throws IOException {
+        browserTab.getTilePane().getChildren().clear();
+        Files.newDirectoryStream(newValue).forEach(new Consumer<Path>() {
+            @Override
+            public void accept(Path path) {
+                browserTab.getTilePane().getChildren().add(buildFileItem(path));
+            }
+        });
+        currentDirectoryAddress.set(newValue.toString());
     }
 
     @Override
@@ -168,7 +138,7 @@ public class FileBrowser implements GUIComponent {
     public Path rename(Path path, String newName) {
         boolean invalidName = false;
         for (char invalidFileNameChar : INVALID_FILE_NAME_CHARS)
-            if (newName.indexOf(invalidFileNameChar) >= -1) {
+            if (newName.indexOf(invalidFileNameChar) > -1) {
                 invalidName = true;
                 break;
             }
@@ -182,5 +152,13 @@ public class FileBrowser implements GUIComponent {
         }
         System.err.println("The name can't contain \\ / * ? : | \" < > characters.");//todo an exception dialog
         return path;
+    }
+
+    public void addNewFile(Path child) {
+        browserTab.getTilePane().getChildren().add(buildFileItem(child));
+    }
+
+    public void deleteOldFile(Path child) {
+        browserTab.getTilePane().getChildren().remove(child);
     }
 }

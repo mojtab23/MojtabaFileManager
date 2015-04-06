@@ -1,4 +1,4 @@
-package cz.cc.mojtaba.file_manager.util;
+package cz.cc.mojtaba.file.manager.util;
 
 import org.controlsfx.dialog.ExceptionDialog;
 

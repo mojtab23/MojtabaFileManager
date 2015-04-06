@@ -22,8 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="MojtabaFileManager" />
+        <module name="UDP" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MojtabaFileManager" target="1.8" />
+      <module name="UDP" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

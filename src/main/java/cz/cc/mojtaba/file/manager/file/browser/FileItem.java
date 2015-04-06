@@ -1,4 +1,4 @@
-package cz.cc.mojtaba.file_manager.file_browser;
+package cz.cc.mojtaba.file.manager.file.browser;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;

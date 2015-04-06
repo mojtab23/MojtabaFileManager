@@ -1,4 +1,4 @@
-package cz.cc.mojtaba.file_manager;
+package cz.cc.mojtaba.file.manager;
 
 /**
  * Created by mojtab23 on 1/11/15.

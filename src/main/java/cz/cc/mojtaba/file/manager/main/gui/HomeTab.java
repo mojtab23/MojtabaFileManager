@@ -1,7 +1,7 @@
-package cz.cc.mojtaba.file_manager.main_gui;
+package cz.cc.mojtaba.file.manager.main.gui;
 
-import cz.cc.mojtaba.file_manager.GUIComponent;
-import cz.cc.mojtaba.file_manager.util.Configs;
+import cz.cc.mojtaba.file.manager.GUIComponent;
+import cz.cc.mojtaba.file.manager.util.Configs;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

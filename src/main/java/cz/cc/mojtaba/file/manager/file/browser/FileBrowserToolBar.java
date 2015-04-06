@@ -1,4 +1,4 @@
-package cz.cc.mojtaba.file_manager.file_browser;
+package cz.cc.mojtaba.file.manager.file.browser;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
