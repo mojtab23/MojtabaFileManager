@@ -42,7 +42,7 @@ public class ReliableUDPClient {
             DatagramPacket request = new DatagramPacket(connectPacket.getBytes(),
                     connectPacket.getLimit(), serverAddress, serverPort);
 
-            socket.setSoTimeout(1000);
+            socket.setSoTimeout(0);
             while (!connectionIsOpen) {
                 socket.send(request);
 
@@ -50,9 +50,9 @@ public class ReliableUDPClient {
                 DatagramPacket p = new DatagramPacket(bytes1, DataPacket.PACKET_SIZE);
                 try {
                     socket.receive(p);
-                    connectPacket = new DataPacket(Arrays.copyOf(p.getData(), p.getLength()));
+                    byte[] bytes = Arrays.copyOf(p.getData(), p.getLength());
+                    connectPacket = new DataPacket(bytes);
                     connectionId = connectPacket.getConnection();
-                    System.out.println("connected.\n");
                     connectionIsOpen = true;
                 } catch (SocketTimeoutException ignored) {
                 }
@@ -73,7 +73,9 @@ public class ReliableUDPClient {
                         byte[] bytes = new byte[DataPacket.PACKET_SIZE];
                         DatagramPacket p = new DatagramPacket(bytes, DataPacket.PACKET_SIZE);
                         socket.receive(p);
-                        DataPacket responsePacket = new DataPacket(Arrays.copyOf(p.getData(), p.getLength()));
+                        System.out.println("received");
+                        byte[] bytes1 = Arrays.copyOf(p.getData(), p.getLength());
+                        DataPacket responsePacket = new DataPacket(bytes1);
 
                         if (responsePacket.getSize() == -1) ackPackets.put(responsePacket);
                         else responsePackets.put(responsePacket);
@@ -93,17 +95,17 @@ public class ReliableUDPClient {
         int len = bytes.length;
         int size = len / dataSize;
 
-
+        seq = 0;
         for (int i = 0; i < len - dataSize + 1; i += dataSize)
-            sendReliable(Arrays.copyOfRange(bytes, i, i + dataSize), size);
+            sendReliable(Arrays.copyOfRange(bytes, i, i + dataSize), size--);
 
         if (len % dataSize != 0)
-            sendReliable(Arrays.copyOfRange(bytes, len - len % dataSize, len), size);
+            sendReliable(Arrays.copyOfRange(bytes, len - len % dataSize, len), size--);
 
     }
 
     private void sendReliable(byte[] out, int chunkSize) throws Exception {
-        seq = 0;
+
         DataPacket dataPacket = new DataPacket(seq, chunkSize,
                 connectionId, out);
         DatagramPacket request = new DatagramPacket(dataPacket.getBytes(),
@@ -111,7 +113,7 @@ public class ReliableUDPClient {
         DataPacket poll;
         do {
             socket.send(request);
-            poll = ackPackets.poll(15, TimeUnit.MILLISECONDS);
+            poll = ackPackets.poll(15, TimeUnit.MINUTES);
         } while (poll.getSeq() != seq);
         seq++;
     }
@@ -122,14 +124,18 @@ public class ReliableUDPClient {
         boolean hasNext = true;
         long packetSeq = 0;
         while (hasNext) {
-            DataPacket packet = responsePackets.poll();
-            if (packetSeq == packet.getSeq()) {
-                stream.write(packet.getData());
-                if (packet.getSize() == 0) hasNext = false;
-                sendAck(packetSeq);
-                packetSeq++;
-            } else if (packet.getSeq() == packetSeq - 1) {
-                sendAck(packetSeq - 1);
+            try {
+                DataPacket packet = responsePackets.take();
+                if (packetSeq == packet.getSeq()) {
+                    stream.write(packet.getData(), 0, packet.getLimit() - DataPacket.HEADER_SIZE);
+                    if (packet.getSize() == 0) hasNext = false;
+                    sendAck(packetSeq);
+                    packetSeq++;
+                } else if (packet.getSeq() == packetSeq - 1) {
+                    sendAck(packetSeq - 1);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         stream.flush();

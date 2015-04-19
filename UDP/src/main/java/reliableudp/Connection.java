@@ -1,10 +1,15 @@
 package reliableudp;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,16 +19,18 @@ public class Connection {
 
     private InetAddress address;
     private int port;
-    private MyInputStream buffer;
+    //    private MyInputStream buffer;
     private long lastSeq = 0;
     private int connectionId = 0;
     private DatagramSocket socket;
+    private BlockingQueue<DataPacket> responsePackets = new ArrayBlockingQueue<>(10);
+    private BlockingQueue<DataPacket> ackPackets = new ArrayBlockingQueue<>(10);
 
     public Connection(DatagramSocket socket, InetAddress address, int port) {
         this.socket = socket;
         this.address = address;
         this.port = port;
-        buffer = new MyInputStream();
+//        buffer = new MyInputStream();
 
         // run service in new thread.
 
@@ -45,36 +52,37 @@ public class Connection {
         return port;
     }
 
-    private Runnable doService() {
-        return () -> {
-
-
-            boolean isHeader = true;
-            int nextByte = 0;
-            try {
-                nextByte = buffer.read();
-                BufferedReader in = new BufferedReader(new InputStreamReader(buffer));
-                String s = in.readLine();
-                System.out.println(s);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        };
-
-    }
+//    private Runnable doService() {
+//        return () -> {
+//
+//
+//            boolean isHeader = true;
+//            int nextByte = 0;
+//            try {
+//                nextByte = buffer.read();
+//                BufferedReader in = new BufferedReader(new InputStreamReader(buffer));
+//                String s = in.readLine();
+//                System.out.println(s);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        };
+//
+//    }
 
     void put(DataPacket packet) {
-
-        buffer.put(packet.getSize() != 0, toBytesObject(packet.getData()));
-        lastSeq = packet.getSeq();
-
+        try {
+            if (packet.getSize() == -1) ackPackets.put(packet);
+            else responsePackets.put(packet);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
-
-    public InputStream getInputStream() {
-        return buffer;
-    }
+//    public InputStream getInputStream() {
+//        return buffer;
+//    }
 
     @Override
     public boolean equals(Object obj) {
@@ -130,14 +138,18 @@ public class Connection {
         boolean hasNext = true;
         long packetSeq = 0;
         while (hasNext) {
-            DataPacket packet = responsePackets.poll();
-            if (packetSeq == packet.getSeq()) {
-                stream.write(packet.getData());
-                if (packet.getSize() == 0) hasNext = false;
-                sendAck(packetSeq);
-                packetSeq++;
-            } else if (packet.getSeq() == packetSeq - 1) {
-                sendAck(packetSeq - 1);
+            try {
+                DataPacket packet = responsePackets.take();
+                if (packetSeq == packet.getSeq()) {
+                    stream.write(packet.getData(), 0, packet.getLimit() - DataPacket.HEADER_SIZE);
+                    if (packet.getSize() == 0) hasNext = false;
+                    sendAck(packetSeq);
+                    packetSeq++;
+                } else if (packet.getSeq() == packetSeq - 1) {
+                    sendAck(packetSeq - 1);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         stream.flush();

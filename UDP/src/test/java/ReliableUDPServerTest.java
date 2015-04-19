@@ -1,7 +1,7 @@
 import reliableudp.MyTask;
 import reliableudp.ReliableUDPServer;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.SocketException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -28,8 +28,14 @@ public class ReliableUDPServerTest {
 
                                         try {
                                             System.out.println(connection);
-                                            System.out.println(connection.getInputStream().read());
-                                        } catch (IOException e) {
+                                            InputStream receive = connection.receive();
+                                            System.out.println(readString(receive));
+                                            String s = "welcome.";
+                                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                                            outputStream.write(s.getBytes());
+                                            outputStream.flush();
+                                            connection.send(outputStream);
+                                        } catch (Exception e) {
                                             e.printStackTrace();
                                         }
 
@@ -37,10 +43,37 @@ public class ReliableUDPServerTest {
                                 }
                             }));
             reliableUDPServer.accept();
+            System.out.println("listening...");
         } catch (SocketException e) {
             e.printStackTrace();
         }
 
     }
 
+    public static String readString(InputStream receive) {
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(receive));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+    }
 }

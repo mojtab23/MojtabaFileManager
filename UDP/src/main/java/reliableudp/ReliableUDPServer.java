@@ -33,10 +33,10 @@ public class ReliableUDPServer {
 
             while (true) {
                 try {
-                    DataPacket packet = new DataPacket();
-                    DatagramPacket request = receive(socket, packet);
+                    DatagramPacket request = receive(socket);
+                    DataPacket packet = new DataPacket(request.getData(), request.getLength());
                     //when received create new session whit new Thread.
-
+                    System.out.println("new request...");
                     if (packet.getConnection() == 0)
                         createNewConnection(request.getAddress(), request.getPort());
                     else sendToConnection(packet);
@@ -62,10 +62,10 @@ public class ReliableUDPServer {
     }
 
 
-    private DatagramPacket receive(DatagramSocket socket, DataPacket packet) throws IOException {
-        DatagramPacket request = new DatagramPacket(packet.getBytes(), DataPacket.PACKET_SIZE);
+    private DatagramPacket receive(DatagramSocket socket) throws IOException {
+        DatagramPacket request = new DatagramPacket(
+                new byte[DataPacket.PACKET_SIZE], DataPacket.PACKET_SIZE);
         socket.receive(request);
-//        System.out.println("data received");
         return request;
     }
 

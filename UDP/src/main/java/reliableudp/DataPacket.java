@@ -13,26 +13,26 @@ public class DataPacket {
     private ByteBuffer buffer = ByteBuffer.allocate(PACKET_SIZE);
 
 
-    public DataPacket(long seq, int size, int connection, byte[] data) throws Exception {
-        if (size >= 0) {
-            buffer.putLong(seq);
-            buffer.putInt(size);
-            buffer.putInt(connection);
-            if (data != null) {
-                buffer.put(data, 0, data.length);
-            }
-            buffer.flip();
-        } else throw new Exception("packet data can not bee more than " + DATA_SIZE + " bytes");
+    public DataPacket(long seq, int size, int connection, byte[] data) {
+        buffer.putLong(seq);
+        buffer.putInt(size);
+        buffer.putInt(connection);
+        if (data != null) {
+            buffer.put(data, 0, data.length);
+        }
+        buffer.flip();
     }
 
-    public DataPacket(byte[] bytes) {
-        buffer.put(bytes, 0, bytes.length);
+    public DataPacket(byte[] data, int length) {
+        buffer.put(data, 0, length);
         buffer.flip();//need flip
     }
 
-    public DataPacket() {
-        new DataPacket(new byte[PACKET_SIZE]);
+    public DataPacket(byte[] data) {
+        buffer.put(data, 0, data.length);
+        buffer.flip();//need flip
     }
+
 
     /**
      * it is not writable.
