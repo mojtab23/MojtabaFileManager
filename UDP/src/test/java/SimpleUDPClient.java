@@ -1,3 +1,5 @@
+import reliableudp.DataPacket;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -25,17 +27,20 @@ public class SimpleUDPClient {
 
             InetAddress host = InetAddress.getByName(HOSTNAME);
 
-            byte[] bytes = new byte[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            for (int i = 0; i < 2; i++) {
-                DataPacket packet = new DataPacket(0, 0, 0, null);
-                DatagramPacket request = new DatagramPacket(packet.getBytes(), bytes.length, host, PORT);
-                socket.send(request);
-                byte[] bytes1 = new byte[DataPacket.PACKET_SIZE];
-                DatagramPacket p = new DatagramPacket(bytes1, DataPacket.PACKET_SIZE);
-                socket.receive(p);
-                packet = new DataPacket(Arrays.copyOf(p.getData(), p.getLength()));
-                System.out.println("connected.\n" + packet);
-            }
+//            byte[] bytes = new byte[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+            DataPacket connectPacket = new DataPacket(0, 0, 0, null);
+            DatagramPacket request = new DatagramPacket(connectPacket.getBytes(), connectPacket.getLimit(), host, PORT);
+            socket.send(request);
+            byte[] bytes1 = new byte[DataPacket.PACKET_SIZE];
+            DatagramPacket p = new DatagramPacket(bytes1, DataPacket.PACKET_SIZE);
+            socket.receive(p);
+            connectPacket = new DataPacket(Arrays.copyOf(p.getData(), p.getLength()));
+            System.out.println("connected.\n" + connectPacket);
+
+            DataPacket dataPacket = new DataPacket(1, 0, connectPacket.getConnection(), "salam".getBytes());
+            request = new DatagramPacket(dataPacket.getBytes(), dataPacket.getLimit(), host, PORT);
+            socket.send(request);
         } catch (Exception e) {
             e.printStackTrace();
         }

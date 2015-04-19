@@ -1,3 +1,5 @@
+package reliableudp;
+
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
@@ -64,7 +66,7 @@ public class DataPacket {
     @Override
     public String toString() {
 
-        return String.format("Connection: %d\nSEQ: %d\nSize: %d\nDataSize: %d",
+        return String.format("reliableudp.Connection: %d\nSEQ: %d\nSize: %d\nDataSize: %d",
                 getConnection(), getSeq(), getSize(), getLimit() - 16);
     }
 }

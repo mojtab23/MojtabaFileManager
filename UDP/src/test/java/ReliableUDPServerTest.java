@@ -1,4 +1,8 @@
+import reliableudp.MyTask;
+import reliableudp.ReliableUDPServer;
+
 import java.io.IOException;
+import java.net.SocketException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -12,22 +16,31 @@ public class ReliableUDPServerTest {
 
     public static void main(String[] args) {
         Executor executor = Executors.newFixedThreadPool(10);
-        ReliableUDPServer reliableUDPServer = new ReliableUDPServer();
-        reliableUDPServer.setConnectionHandler(
-                connection ->
-                        executor.execute(
-                                () -> {
+        ReliableUDPServer reliableUDPServer = null;
+        try {
+            reliableUDPServer = new ReliableUDPServer(10024);
+            reliableUDPServer.setConnectionHandler(
+                    connection -> executor.execute(
+                            new MyTask(connection) {
+                                @Override
+                                public void run() {
                                     while (true) {
 
                                         try {
+                                            System.out.println(connection);
                                             System.out.println(connection.getInputStream().read());
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
 
                                     }
-                                }));
-        reliableUDPServer.accept();
+                                }
+                            }));
+            reliableUDPServer.accept();
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

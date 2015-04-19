@@ -1,3 +1,5 @@
+package reliableudp;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -12,9 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ReliableUDPServer {
 
-    private final static int PORT = 10024;
+    private int port;
     private Map<Integer, Connection> clients = new ConcurrentHashMap<>();
     private ConnectionHandler connectionHandler;
+    private DatagramSocket socket;
+
+    public ReliableUDPServer(int port) throws SocketException {
+        socket = new DatagramSocket(port);
+    }
 
     public void setConnectionHandler(ConnectionHandler connectionHandler) {
         this.connectionHandler = connectionHandler;
@@ -24,42 +31,48 @@ public class ReliableUDPServer {
         Thread thread = new Thread(() -> {
 
 
-            try (DatagramSocket socket = new DatagramSocket(PORT)) {
-                while (true) {
-                    try {
-                        DataPacket packet = new DataPacket();
-                        DatagramPacket request = receive(socket, packet);
-                        //when received create new session whit new Thread.
+            while (true) {
+                try {
+                    DataPacket packet = new DataPacket();
+                    DatagramPacket request = receive(socket, packet);
+                    //when received create new session whit new Thread.
 
-                        if (packet.getConnection() == 0)
-                            createNewConnection(socket, request.getAddress(), request.getPort(), packet);
-//                    else sendToSession(packet);
+                    if (packet.getConnection() == 0)
+                        createNewConnection(request.getAddress(), request.getPort());
+                    else sendToConnection(packet);
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-            } catch (SocketException e) {
-                e.printStackTrace();
+
             }
         });
         thread.start();
     }
 
+    private void sendToConnection(DataPacket packet) {
+
+        int connectionId = packet.getConnection();
+        Connection connection = clients.get(connectionId);
+        if (connection != null) {
+            connection.put(packet);
+        }
+
+    }
+
+
     private DatagramPacket receive(DatagramSocket socket, DataPacket packet) throws IOException {
         DatagramPacket request = new DatagramPacket(packet.getBytes(), DataPacket.PACKET_SIZE);
         socket.receive(request);
-        System.out.println("data received");
+//        System.out.println("data received");
         return request;
     }
 
-    private void createNewConnection(DatagramSocket socket, InetAddress address, int port, DataPacket packet) {
+    private void createNewConnection(InetAddress address, int port) {
         Random random = new Random();
         final int[] connectionId = new int[1];
-        Connection connection = new Connection(address, port);
+        Connection connection = new Connection(socket, address, port);
         //if connection exist.
         final boolean[] exist = {false};
         exist[0] = clients.entrySet().stream().anyMatch(integerConnectionEntry -> {
@@ -70,15 +83,16 @@ public class ReliableUDPServer {
 
         if (!exist[0]) {
             while ((connectionId[0] = random.nextInt(Integer.MAX_VALUE)) == 0 || clients.containsKey(connectionId[0])) ;
+            connection.setConnectionId(connectionId[0]);
             clients.put(connectionId[0], connection);
             connectionHandler.handleConnection(connection);
         }
 
-        sendConnectionAccept(socket, address, port, connectionId[0]);
+        sendConnectionAccept(address, port, connectionId[0]);
 
     }
 
-    private void sendConnectionAccept(DatagramSocket socket, InetAddress address, int port, int connectionId) {
+    private void sendConnectionAccept(InetAddress address, int port, int connectionId) {
 
         try {
             DataPacket dataPacket = new DataPacket(0, 0, connectionId, null);
